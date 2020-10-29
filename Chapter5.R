@@ -97,3 +97,11 @@ boot.fn <- function(data, indrange) {
 set.seed(1)
 boot(Auto, boot.fn, R=1000)
 summary(lm(mpg~horsepower + I(horsepower^2), data = Auto))$coef
+
+
+store = rep(NA, 10000)
+for (i in 1:10000) {
+  store[i] = sum(sample(1:100, replace = T) == 4) > 0
+}
+store[1:30]
+mean(store)
